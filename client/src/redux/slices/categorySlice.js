@@ -4,7 +4,7 @@
     import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
     import axios from 'axios';
 
-    const API_URL = 'http://localhost:5000/api/categories/';
+    const API_URL = 'https://ehub-c95q.onrender.com/api/categories/';
 
     const initialState = {
         categories: [],

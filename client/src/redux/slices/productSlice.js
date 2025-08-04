@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/products/';
+const API_URL = 'https://ehub-c95q.onrender.com/api/products/';
 const initialState = {
   products: [],
   product: {},

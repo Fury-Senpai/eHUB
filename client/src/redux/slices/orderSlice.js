@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { resetCart } from './cartSlice'; // We use this to clear the cart after an order
 
-const API_URL = 'http://localhost:5000/api/orders/';
+const API_URL = 'https://ehub-c95q.onrender.com/api/orders/';
 
 const initialState = {
     orders: [],
