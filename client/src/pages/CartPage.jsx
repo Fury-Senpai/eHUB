@@ -55,7 +55,7 @@ const CartPage = () => {
                     <div className="md:col-span-2 space-y-4">
                         {cartItems.map((item) => (
                             <div key={item.product._id} className="flex items-center bg-light-gray p-4 rounded-lg">
-                                <img src={`http://localhost:5000${item.product.imageUrl}`} alt={item.product.name} className="w-24 h-24 object-cover rounded-md" />
+                                <img src={`https://ehub-c95q.onrender.com${item.product.imageUrl}`} alt={item.product.name} className="w-24 h-24 object-cover rounded-md" />
                                 <div className="flex-grow mx-4">
                                     <Link to={`/product/${item.product._id}`} className="text-lg font-bold text-off-white hover:text-primary-orange">{item.product.name}</Link>
                                     <p className="text-primary-orange font-semibold">${item.product.price.toFixed(2)}</p>

@@ -43,7 +43,7 @@ const CheckoutPage = () => {
                     <div className="space-y-3">
                         {cartItems.map(item => (
                              <div key={item.product._id} className="flex items-center bg-light-gray p-3 rounded-lg">
-                                <img src={`http://localhost:5000${item.product.imageUrl}`} alt={item.product.name} className="w-16 h-16 object-cover rounded" />
+                                <img src={`https://ehub-c95q.onrender.com${item.product.imageUrl}`} alt={item.product.name} className="w-16 h-16 object-cover rounded" />
                                 <div className="flex-grow mx-4 text-off-white">{item.product.name}</div>
                                 <div className="text-off-white">{item.quantity} x ${item.product.price.toFixed(2)} = <span className="font-bold">${(item.quantity * item.product.price).toFixed(2)}</span></div>
                             </div>

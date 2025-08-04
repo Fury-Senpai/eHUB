@@ -50,7 +50,7 @@ const ProductPage = () => {
     return (
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             <div>
-                <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} className="w-full h-auto object-cover rounded-lg shadow-lg" />
+                <img src={`https://ehub-c95q.onrender.com${product.imageUrl}`} alt={product.name} className="w-full h-auto object-cover rounded-lg shadow-lg" />
             </div>
             <div className="flex flex-col">
                 <h1 className="text-4xl font-bold text-white">{product.name}</h1>

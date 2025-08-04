@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
     return (
         <Link to={`/product/${product._id}`} className="block">
             <div className="bg-light-gray rounded-lg p-4 flex flex-col justify-between shadow-md transition-transform hover:scale-105 h-full">
-                <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
+                <img src={`https://ehub-c95q.onrender.com${product.imageUrl}`} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
                 <div className="flex-grow flex flex-col justify-end">
                     <h3 className="font-bold text-lg text-off-white truncate">{product.name}</h3>
                     <div className="flex items-baseline  space-x-2 mt-2">
