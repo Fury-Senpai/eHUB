@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/redux/slices/dashboardSlice.js
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -35,7 +33,7 @@ export const dashboardSlice = createSlice({
     name: 'dashboard',
     initialState,
     reducers: {
-        // FIX: Rename reset to be unique
+        
         resetDashboard: (state) => initialState,
     },
     extraReducers: (builder) => {
@@ -57,6 +55,6 @@ export const dashboardSlice = createSlice({
     }
 });
 
-// FIX: Export the new unique action name
+
 export const { resetDashboard } = dashboardSlice.actions;
 export default dashboardSlice.reducer;

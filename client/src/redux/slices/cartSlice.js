@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/redux/slices/cartSlice.js
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -14,7 +12,7 @@ const initialState = {
 };
 
 const getToken = (thunkAPI) => {
-    // Add optional chaining to prevent errors if user is not logged in
+    
     return thunkAPI.getState().auth.user?.token;
 }
 
@@ -58,7 +56,7 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        // FIX: Rename reset to be unique
+      
         resetCart: (state) => initialState,
     },
     extraReducers: (builder) => {
@@ -99,6 +97,6 @@ export const cartSlice = createSlice({
     }
 });
 
-// FIX: Export the new unique action name
+
 export const { resetCart } = cartSlice.actions;
 export default cartSlice.reducer;

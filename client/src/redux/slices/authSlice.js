@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/redux/slices/authSlice.js
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -49,7 +47,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // FIX: The reducer is correctly named here
+    
     resetAuth: (state) => {
       state.isLoading = false;
       state.isSuccess = false;
@@ -89,6 +87,6 @@ export const authSlice = createSlice({
   },
 });
 
-// FIX: The action is correctly exported here
+
 export const { resetAuth } = authSlice.actions;
 export default authSlice.reducer;

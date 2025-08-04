@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/redux/slices/orderSlice.js
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { resetCart } from './cartSlice'; // We use this to clear the cart after an order
@@ -37,7 +35,7 @@ export const orderSlice = createSlice({
     name: 'order',
     initialState,
     reducers: {
-        // FIX: Rename reset to be unique
+       
         resetOrder: (state) => initialState,
     },
     extraReducers: (builder) => {
@@ -58,6 +56,6 @@ export const orderSlice = createSlice({
     }
 });
 
-// FIX: Export the new unique action name
+
 export const { resetOrder } = orderSlice.actions;
 export default orderSlice.reducer;

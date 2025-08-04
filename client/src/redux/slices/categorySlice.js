@@ -1,6 +1,4 @@
-    // ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-    //      File: client/src/redux/slices/categorySlice.js
-    // ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
     import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
     import axios from 'axios';
 
@@ -55,7 +53,7 @@
         name: 'categories',
         initialState,
         reducers: {
-            // FIX: This function should reset the entire state to its initial value.
+           
             resetCategories: (state) => initialState
         },
         extraReducers: (builder) => {
@@ -74,7 +72,7 @@
                 .addCase(createCategory.fulfilled, (state, action) => {
                     state.isLoading = false;
                     state.isSuccess = true;
-                    // This will now work correctly because the state is always predictable.
+                   
                     state.categories.push(action.payload);
                 })
                 .addCase(createCategory.rejected, (state, action) => {
