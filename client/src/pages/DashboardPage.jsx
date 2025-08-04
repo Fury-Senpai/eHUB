@@ -1,13 +1,10 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/DashboardPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSellerOrders, resetDashboard } from '../redux/slices/dashboardSlice';
-import { FaSpinner, FaDollarSign, FaShoppingCart, FaBoxOpen, FaPlus, FaTags } from 'react-icons/fa';
+import { getProducts, deleteProduct, resetProducts } from '../redux/slices/productSlice';
+import { FaSpinner, FaEdit, FaTrash, FaPlus, FaTags, FaDollarSign, FaShoppingCart, FaBoxOpen } from 'react-icons/fa';
 
-// FIX: Provide the full component definition instead of a comment
 const StatCard = ({ title, value, icon, color }) => (
     <div className={`bg-light-gray p-6 rounded-lg shadow-lg flex items-center`}>
         <div className={`p-4 rounded-full mr-4 ${color}`}>
@@ -23,21 +20,33 @@ const StatCard = ({ title, value, icon, color }) => (
 const DashboardPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const { user } = useSelector((state) => state.auth);
-    const { orders, totalSales, totalRevenue, isLoading } = useSelector((state) => state.dashboard);
+    const { orders, totalSales, totalRevenue, isLoading: dashboardLoading } = useSelector((state) => state.dashboard);
+    const { products, isLoading: productsLoading } = useSelector((state) => state.products);
 
     useEffect(() => {
         if (!user || user.role !== 'Seller') {
             navigate('/login');
         } else {
             dispatch(getSellerOrders());
+            dispatch(getProducts({})); // Fetch all products for the seller
         }
         return () => {
             dispatch(resetDashboard());
+            dispatch(resetProducts());
         }
     }, [user, navigate, dispatch]);
 
-    if (isLoading) return <div className="flex justify-center items-center h-64"><FaSpinner className="animate-spin text-primary-orange text-4xl" /></div>;
+    const deleteHandler = (id) => {
+        if (window.confirm('Are you sure you want to delete this product?')) {
+            dispatch(deleteProduct(id));
+        }
+    };
+
+    if (dashboardLoading || productsLoading) {
+        return <div className="flex justify-center items-center h-64"><FaSpinner className="animate-spin text-primary-orange text-4xl" /></div>;
+    }
 
     return (
         <div>
@@ -61,36 +70,38 @@ const DashboardPage = () => {
                 <StatCard title="Pending Orders" value={orders.filter(o => o.status === 'Pending').length} icon={<FaBoxOpen size={24} className="text-white"/>} color="bg-yellow-500" />
             </div>
 
-            <div className="bg-light-gray p-6 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-white mb-4">Recent Orders</h2>
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left">
-                        <thead>
-                            <tr className="border-b border-gray-600">
-                                <th className="p-3">Order ID</th>
-                                <th className="p-3">Date</th>
-                                <th className="p-3">Customer</th>
-                                <th className="p-3">Total</th>
-                                <th className="p-3">Status</th>
+            {/* Product List Table */}
+            <div className="bg-light-gray p-6 rounded-lg shadow-lg mt-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Manage Products</h2>
+                <table className="w-full text-left">
+                    <thead>
+                        <tr className="border-b border-gray-600">
+                            <th className="p-3">ID</th>
+                            <th className="p-3">Name</th>
+                            <th className="p-3">Price</th>
+                            <th className="p-3">Stock</th>
+                            <th className="p-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {(products || []).map(product => (
+                            <tr key={product._id} className="border-b border-gray-700">
+                                <td className="p-3 text-sm text-gray-400">{product._id}</td>
+                                <td className="p-3 text-off-white">{product.name}</td>
+                                <td className="p-3 text-primary-orange">${product.price}</td>
+                                <td className="p-3 text-off-white">{product.stock}</td>
+                                <td className="p-3 flex space-x-3">
+                                    <Link to={`/seller/product/${product._id}/edit`}>
+                                        <FaEdit className="text-yellow-500 hover:text-yellow-300"/>
+                                    </Link>
+                                    <button onClick={() => deleteHandler(product._id)}>
+                                        <FaTrash className="text-red-500 hover:text-red-300"/>
+                                    </button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {orders.slice(0, 10).map(order => (
-                                <tr key={order._id} className="border-b border-gray-700 hover:bg-dark-gray">
-                                    <td className="p-3 text-sm text-gray-400">{order._id}</td>
-                                    <td className="p-3">{new Date(order.createdAt).toLocaleDateString()}</td>
-                                    <td className="p-3">{order.user?.name || 'N/A'}</td>
-                                    <td className="p-3 font-bold text-primary-orange">${order.totalAmount.toFixed(2)}</td>
-                                    <td className="p-3">
-                                        <span className={`px-2 py-1 text-xs font-bold rounded-full ${order.status === 'Delivered' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-dark-gray'}`}>
-                                            {order.status}
-                                        </span>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );
