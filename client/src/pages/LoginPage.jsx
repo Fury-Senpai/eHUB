@@ -1,10 +1,8 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/LoginPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// FIX: Import the unique resetAuth action
+
 import { login, resetAuth } from '../redux/slices/authSlice';
 
 const LoginPage = () => {
@@ -28,7 +26,7 @@ const LoginPage = () => {
             navigate('/');
         }
 
-        // FIX: Dispatch the unique resetAuth action
+      
         dispatch(resetAuth());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
 

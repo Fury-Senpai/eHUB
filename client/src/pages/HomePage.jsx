@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/HomePage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,7 +43,7 @@ const HomePage = () => {
 
     return (
         <div className="space-y-16">
-            {/* Updated Banner Section */}
+            {/* Banner Section */}
             <section 
                 className="relative bg-cover bg-center rounded-lg p-8 md:p-12 text-center shadow-lg text-white"
                 style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/banner-1.png')` }}

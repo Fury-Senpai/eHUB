@@ -29,7 +29,7 @@ const EditProductPage = () => {
             navigate('/login');
         }
 
-        // If the update was successful, show an alert and navigate away
+        
         if (isSuccess) {
             alert('Product Updated Successfully!');
             dispatch(resetProducts());

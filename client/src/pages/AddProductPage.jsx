@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/AddProductPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +20,7 @@ const AddProductPage = () => {
     const navigate = useNavigate();
 
     const { user } = useSelector(state => state.auth);
-    // Correctly select the categories state
+   
     const { categories } = useSelector(state => state.categories);
     const { isLoading, isError, isSuccess, message } = useSelector(state => state.products);
 

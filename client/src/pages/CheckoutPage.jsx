@@ -1,10 +1,8 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/CheckoutPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// FIX: Import the unique resetOrder action
+
 import { createOrder, resetOrder } from '../redux/slices/orderSlice';
 import { FaSpinner } from 'react-icons/fa';
 
@@ -20,9 +18,9 @@ const CheckoutPage = () => {
             alert(message);
         }
         if (isSuccess && order?._id) {
-            // We don't have an order success page yet, so let's go home for now
+           
             navigate(`/`); 
-            // FIX: Use the unique resetOrder action
+            
             dispatch(resetOrder());
         }
     }, [isSuccess, isError, message, order, navigate, dispatch]);

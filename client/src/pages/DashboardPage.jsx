@@ -30,7 +30,7 @@ const DashboardPage = () => {
             navigate('/login');
         } else {
             dispatch(getSellerOrders());
-            dispatch(getProducts({})); // Fetch all products for the seller
+            dispatch(getProducts({})); 
         }
         return () => {
             dispatch(resetDashboard());

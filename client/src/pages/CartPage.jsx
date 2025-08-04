@@ -1,10 +1,9 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/CartPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
+
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// FIX: Import the unique resetCart action
+
 import { getCart, removeFromCart, resetCart } from '../redux/slices/cartSlice';
 import { FaTrash, FaSpinner } from 'react-icons/fa';
 
@@ -21,7 +20,7 @@ const CartPage = () => {
         } else {
             dispatch(getCart());
         }
-        // FIX: Use the unique resetCart action in the cleanup
+      
         return () => {
             dispatch(resetCart());
         }

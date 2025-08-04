@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/ProductsPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,7 +46,7 @@ const ProductsPage = () => {
         return () => { dispatch(resetProducts()) };
     }, [dispatch, keyword, pageNumber]);
 
-    // FIX: Provide a fallback empty array to prevent 'filter of undefined' error
+    
     const validProducts = (products || []).filter(p => p && p._id);
 
     return (

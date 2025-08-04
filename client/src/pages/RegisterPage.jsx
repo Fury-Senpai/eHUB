@@ -1,7 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/RegisterPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-// FIX: Add useState and useEffect to the import from 'react'
+
 import React, { useState, useEffect } from 'react'; 
 import { Link as RouterLink, useNavigate as useRouterNavigate } from 'react-router-dom';
 import { useDispatch as useAppDispatch, useSelector as useAppSelector } from 'react-redux';

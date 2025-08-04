@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/ProductPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,7 +52,7 @@ const ProductPage = () => {
             </div>
             <div className="flex flex-col">
                 <h1 className="text-4xl font-bold text-white">{product.name}</h1>
-                {/* FIX: Replaced ">" with a span for proper JSX syntax */}
+               
                 <Link to={`/category/${product.category?.name}`} className="text-primary-orange hover:underline mt-1">
                     {product.category?.name} <span className="mx-1">{'>'}</span> {product.subCategory}
                 </Link>

@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      File: client/src/pages/ManageCategoriesPage.jsx
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -98,7 +96,7 @@ const ManageCategoriesPage = () => {
                 <div className="bg-light-gray p-6 rounded-lg">
                     <h2 className="text-2xl font-bold text-white mb-4">Existing Categories</h2>
                     <div className="space-y-3">
-                        {/* FIX: Add a fallback empty array to prevent crash */}
+                        {/* fallback to empty array to prevent crash */}
                         {(categories || []).map(cat => (
                             <div key={cat._id} className="bg-dark-gray p-3 rounded flex justify-between items-center">
                                 <div>
