@@ -4,7 +4,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'https://ehub-c95q.onrender.com/api/cart';
+const API_URL = 'https://ehub-c95q.onrender.com/api/cart/';
 const initialState = {
     cartItems: [],
     isError: false,
