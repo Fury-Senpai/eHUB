@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductById, resetProducts } from '../redux/slices/productSlice';
-// FIX: Correct the import path for the cartSlice
 import { addToCart } from '../redux/slices/cartSlice';
 import { FaSpinner, FaShoppingCart } from 'react-icons/fa';
 
@@ -55,8 +54,9 @@ const ProductPage = () => {
             </div>
             <div className="flex flex-col">
                 <h1 className="text-4xl font-bold text-white">{product.name}</h1>
+                {/* FIX: Replaced ">" with a span for proper JSX syntax */}
                 <Link to={`/category/${product.category?.name}`} className="text-primary-orange hover:underline mt-1">
-                    {product.category?.name} > {product.subCategory}
+                    {product.category?.name} <span className="mx-1">{'>'}</span> {product.subCategory}
                 </Link>
                 <p className="text-gray-300 mt-4 text-lg leading-relaxed">{product.description}</p>
                 <div className="my-6">
@@ -74,7 +74,6 @@ const ProductPage = () => {
                         </div>
                     )}
                 </div>
-                <p class="font-bold text-xl text-red-500">$1074.48</p>
                 <div className="bg-light-gray p-4 rounded-lg mt-auto">
                     <div className="flex justify-between items-center mb-4">
                         <span className="font-bold text-lg">Status:</span>
