@@ -1,17 +1,14 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 const express = require('express');
 const { registerUser, loginUser } = require('../controllers/userController');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Router Initialization
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 const router = express.Router();
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Route Definitions
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 // This defines the endpoints for user authentication.
 // The actual logic is handled by the controller functions we imported.
 
@@ -25,7 +22,4 @@ router.post('/register', registerUser);
 // @access  Public
 router.post('/login', loginUser);
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Router Export
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 module.exports = router;

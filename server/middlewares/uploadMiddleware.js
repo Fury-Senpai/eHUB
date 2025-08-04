@@ -1,13 +1,9 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 //      Multer Configuration
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 // Set up storage engine for Multer
 const storage = multer.diskStorage({
     // Define the destination directory for uploaded files
@@ -25,9 +21,9 @@ const storage = multer.diskStorage({
     }
 });
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      File Filter
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * Filter to ensure only image files are uploaded.
  */
@@ -46,9 +42,8 @@ const checkFileType = (file, cb) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 //      Multer Initialization
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 // Initialize multer with the storage engine and file filter
 const upload = multer({
     storage: storage,
@@ -58,7 +53,5 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024 } // 5MB file size limit
 });
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Export
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 module.exports = upload;

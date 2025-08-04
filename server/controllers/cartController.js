@@ -1,12 +1,9 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Get User's Cart
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Get user's shopping cart
  * @route   GET /api/cart
@@ -17,7 +14,7 @@ const getCart = async (req, res) => {
         // Find the cart for the logged-in user and populate product details
         const cart = await Cart.findOne({ user: req.user._id }).populate('items.product', 'name price imageUrl');
         if (!cart) {
-            // If no cart exists, return an empty one.
+           
             return res.json({ items: [] });
         }
         res.json(cart);
@@ -27,9 +24,9 @@ const getCart = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Add/Update Item in Cart
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Add an item to the cart or update its quantity
  * @route   POST /api/cart
@@ -70,9 +67,9 @@ const addItemToCart = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Remove Item from Cart
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Remove an item from the cart
  * @route   DELETE /api/cart/:productId
@@ -102,9 +99,7 @@ const removeItemFromCart = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Exports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 module.exports = {
     getCart,
     addItemToCart,

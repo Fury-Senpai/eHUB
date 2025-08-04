@@ -1,6 +1,4 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 const express = require('express');
 const {
     getCart,
@@ -9,14 +7,14 @@ const {
 } = require('../controllers/cartController');
 const { protect } = require('../middlewares/authMiddleware');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Router Initialization
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 const router = express.Router();
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Route Definitions
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 // All cart routes are protected and require a user to be logged in.
 
 // Get the user's cart
@@ -28,7 +26,5 @@ router.route('/')
 // Remove an item from the cart
 router.delete('/:productId', protect, removeItemFromCart);
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Router Export
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 module.exports = router;

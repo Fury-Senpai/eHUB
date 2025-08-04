@@ -1,6 +1,6 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 const express = require('express');
 const {
     createCategory,
@@ -10,17 +10,17 @@ const {
 } = require('../controllers/categoryController');
 const { protect, isSeller } = require('../middlewares/authMiddleware');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Router Initialization
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 const router = express.Router();
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Route Definitions
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 
 // --- Public Routes ---
-// Anyone can view the list of categories
+
 router.get('/', getCategories);
 
 // --- Seller-Only Routes ---
@@ -35,7 +35,4 @@ router.route('/:id')
     .put(protect, isSeller, updateCategory)
     .delete(protect, isSeller, deleteCategory);
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Router Export
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 module.exports = router;

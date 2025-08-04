@@ -15,9 +15,9 @@ const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Configuration
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 // Load environment variables from our .env file
 dotenv.config();
 
@@ -25,9 +25,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Database Connection
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 // Connect to MongoDB using the URI from our environment variables
 mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
@@ -39,9 +39,8 @@ mongoose.connect(process.env.DB_URI, {
     process.exit(1);
 });
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 //      Middleware
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 // Enable Cross-Origin Resource Sharing (CORS)
 app.use(cors());
 
@@ -52,9 +51,9 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+//
 //      API Routes
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+//
 // A simple test route to check if the server is up and running
 app.get('/api', (req, res) => {
     res.json({ message: 'Welcome to the E-commerce API! Server is running.' });
@@ -76,9 +75,9 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 //      Server Initialization
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+// 
 // Start listening for incoming requests on the specified port
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -1,13 +1,13 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 const User = require('../models/User.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Helper Function: Generate JWT
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * Generates a JSON Web Token for a given user ID.
  * @param {string} id - The user's MongoDB document ID.
@@ -19,9 +19,9 @@ const generateToken = (id) => {
     });
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Register User
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Register a new user
  * @route   POST /api/users/register
@@ -80,9 +80,7 @@ const registerUser = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 //      Controller Logic: Login User
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 /**
  * @desc    Authenticate a user and get token
  * @route   POST /api/users/login
@@ -119,9 +117,7 @@ const loginUser = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Exports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 module.exports = {
     registerUser,
     loginUser,

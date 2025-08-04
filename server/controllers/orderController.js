@@ -1,13 +1,10 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 const Order = require('../models/Order');
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Create Order
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Create a new order from the user's cart
  * @route   POST /api/orders
@@ -50,7 +47,7 @@ const createOrder = async (req, res) => {
             user: userId,
             items: orderItems,
             totalAmount: totalAmount,
-            // shippingAddress and paymentResult can be added from req.body if available
+            
             shippingAddress: req.body.shippingAddress || {},
         });
 
@@ -75,9 +72,9 @@ const createOrder = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Get User's Orders
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Get logged in user's orders
  * @route   GET /api/orders/myorders
@@ -93,9 +90,9 @@ const getMyOrders = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Get All Orders (for Seller)
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Get all orders
  * @route   GET /api/orders
@@ -112,9 +109,9 @@ const getAllOrders = async (req, res) => {
 };
 
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Exports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 module.exports = {
     createOrder,
     getMyOrders,

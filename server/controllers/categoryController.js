@@ -1,11 +1,10 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 const Category = require('../models/Category');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 //      Controller Logic: Create Category
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Create a new category
  * @route   POST /api/categories
@@ -39,9 +38,9 @@ const createCategory = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Get All Categories
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Get all categories and their sub-categories
  * @route   GET /api/categories
@@ -57,9 +56,9 @@ const getCategories = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Update Category
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Update a category's name or sub-categories
  * @route   PUT /api/categories/:id
@@ -87,9 +86,9 @@ const updateCategory = async (req, res) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Controller Logic: Delete Category
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * @desc    Delete a category
  * @route   DELETE /api/categories/:id
@@ -100,9 +99,7 @@ const deleteCategory = async (req, res) => {
         const category = await Category.findById(req.params.id);
 
         if (category) {
-            // Optional: Check if any products are using this category before deleting.
-            // For now, we will allow deletion.
-            await category.deleteOne(); // Mongoose 5+ uses deleteOne()
+            await category.deleteOne(); 
             res.json({ message: 'Category removed.' });
         } else {
             res.status(404).json({ message: 'Category not found.' });
@@ -114,9 +111,9 @@ const deleteCategory = async (req, res) => {
 };
 
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Exports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 module.exports = {
     createCategory,
     getCategories,

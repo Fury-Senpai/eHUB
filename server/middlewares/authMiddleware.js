@@ -1,12 +1,10 @@
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Imports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Middleware: Protect Routes
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * Middleware to verify JWT and protect routes.
  * It checks for a token in the Authorization header, verifies it,
@@ -45,9 +43,9 @@ const protect = async (req, res, next) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 //      Middleware: Restrict to Seller
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
 /**
  * Middleware to check if the authenticated user has the 'Seller' role.
  * This should be used after the 'protect' middleware.
@@ -60,7 +58,4 @@ const isSeller = (req, res, next) => {
     }
 };
 
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
-//      Exports
-// ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 module.exports = { protect, isSeller };
